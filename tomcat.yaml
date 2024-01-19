@@ -11,3 +11,12 @@
     - name: Display date output
       debug:
         var: date_output.stdout
+        
+    - name: Clone GitHub repository (specify release)
+      git:
+        repo: https://github.com/harikrishna1302/hari-wmt-release.git  # Replace with your GitHub repository URL
+        dest: /tmp/deployhari # keep your own name 
+        version: release  
+
+    - name: Run ls command to check copied files
+      command: cp -v /tmp/deployhari/hari-webapp.war /opt/apache-tomcat-10.1.18/webapps/
